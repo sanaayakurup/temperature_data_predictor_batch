@@ -1,6 +1,7 @@
 #the project goes this way
 #creat a git repo -Done
 #create a venve-Done
+#add gitignore file for csvs 
 #write code to pull in hourly historical temperature data and store in a csv/cloud bucket. make sure error handling and logging is in place. Maybe create a 
 utils file to pull in the logger. 
 #use this file to train a model to predict temp for each hour  
