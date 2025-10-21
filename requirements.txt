@@ -1,0 +1,5 @@
+openmeteo-requests
+requests-cache
+retry-requests 
+numpy==2.3.4
+pandas==2.3.3
