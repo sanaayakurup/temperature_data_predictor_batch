@@ -1,8 +1,10 @@
 """
 This file will read in data from the hitorical api. 
 We will use this data to train the model
+#think about improvements-make things dynamic/read from congif
+#make the below a function
+#log the data file in mlflow
 """
-print("ji")
 import openmeteo_requests
 import pandas as pd
 import requests_cache
@@ -27,7 +29,7 @@ try:
     "longitude": [73.8567, -79.6441],   # Pune, Mississauga
     "start_date": "2010-01-01", #can make this dynamic 
     "end_date": "2019-12-31",
-    "hourly": "temperature_2m",
+    "hourly": ["temperature_2m", "rain", "wind_speed_10m", "pressure_msl"],
         }
     responses = openmeteo.weather_api(url, params=params)
     all_dfs = []
@@ -37,6 +39,11 @@ try:
         lon = response.Longitude()
         hourly = response.Hourly()
         temps = hourly.Variables(0).ValuesAsNumpy()
+        rain = hourly.Variables(1).ValuesAsNumpy()
+        wind_speed_10m = hourly.Variables(2).ValuesAsNumpy()
+        pressure_msl = hourly.Variables(3).ValuesAsNumpy()
+        
+
         time_index = pd.date_range(
             start = pd.to_datetime(hourly.Time(), unit="s", utc=True),
             end   = pd.to_datetime(hourly.TimeEnd(), unit="s", utc=True),
@@ -46,6 +53,9 @@ try:
         df = pd.DataFrame({
         "date":           time_index,
         "temperature_2m": temps,
+        "rain": rain,
+        "wind_speed_10m": wind_speed_10m,
+        "pressure_msl": pressure_msl,
         "latitude":       lat,
         "longitude":      lon,
         "location":       locations[idx]
