@@ -1,0 +1,251 @@
+2025-10-22 16:44:32,454 - INFO - 2025-10-22 16:44:32.454678:Initialising the train.py script connection
+2025-10-22 16:44:33,848 - INFO - 2025-10-22 16:44:33.848851:Data Cleaned and Split
+2025-10-22 16:44:35,774 - INFO - 2025-10-22 16:44:35.774042:Ran LinearRegression models to compare performance
+2025-10-22 16:44:35,831 - INFO - 2025-10-22 16:44:35.831070:Ran Ridge models to compare performance
+2025-10-22 16:44:35,898 - INFO - 2025-10-22 16:44:35.898668:Ran Lasso models to compare performance
+2025-10-22 16:44:35,993 - INFO - 2025-10-22 16:44:35.993488:Ran ElasticNet models to compare performance
+2025-10-22 16:44:52,735 - INFO - 2025-10-22 16:44:52.735030:Ran GradientBoosting models to compare performance
+2025-10-22 16:46:00,472 - INFO - 2025-10-22 16:46:00.472756:Ran RandomForest models to compare performance
+2025-10-22 16:46:02,594 - INFO - 2025-10-22 16:46:02.594340:Ran XGBoost models to compare performance
+2025-10-22 16:46:03,650 - INFO - 2025-10-22 16:46:03.650441:plot_to_compare_models
+2025-10-22 16:46:03,652 - INFO - 2025-10-22 16:46:03.651925:Finding Lowest RMSE
+2025-10-22 16:46:03,774 - INFO - 2025-10-22 16:46:03.774452:GradientBoosting IS RUN AND SAVED IN MODELS DIR
+2025-10-22 16:48:11,059 - INFO - 2025-10-22 16:48:11.059263:Actual vs Pred PLOT
+2025-10-22 16:48:16,251 - INFO - 2025-10-22 16:48:16.251190:Actual vs Pred PLOT
+2025-10-22 21:26:14,337 - INFO - 2025-10-22 21:26:14.337940:Initialising the train.py script connection
+2025-10-22 21:26:24,283 - INFO - 2025-10-22 21:26:24.282962:Data Cleaned and Split
+2025-10-22 21:26:24,421 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 48, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 35, in main
+    make_model(X_train_scaled, X_test_scaled, y_train, y_test, LinearRegression(), 'LinearRegression',df_models_comp)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\train.py", line 60, in make_model
+    mlflow.log_param({"model_name":model_name})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: log_param() missing 1 required positional argument: 'value'
+2025-10-22 21:28:15,915 - INFO - 2025-10-22 21:28:15.915074:Initialising the train.py script connection
+2025-10-22 21:28:20,611 - INFO - 2025-10-22 21:28:20.610978:Data Cleaned and Split
+2025-10-22 21:28:20,733 - INFO - 2025-10-22 21:28:20.733366:Ran LinearRegression models to compare performance
+2025-10-22 21:32:50,571 - INFO - 2025-10-22 21:32:50.571391:Initialising the train.py script connection
+2025-10-22 21:32:55,092 - INFO - 2025-10-22 21:32:55.092422:Data Cleaned and Split
+2025-10-22 21:32:55,216 - INFO - 2025-10-22 21:32:55.216533:Ran LinearRegression models to compare performance
+2025-10-22 21:34:41,712 - INFO - 2025-10-22 21:34:41.712458:Initialising the train.py script connection
+2025-10-22 21:34:46,489 - INFO - 2025-10-22 21:34:46.489660:Data Cleaned and Split
+2025-10-22 21:34:46,613 - INFO - 2025-10-22 21:34:46.613591:Ran LinearRegression models to compare performance
+2025-10-22 21:34:46,718 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: params.key, params.run_uuid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\store\tracking\sqlalchemy_store.py", line 1249, in log_param
+    session.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1048, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: params.key, params.run_uuid
+[SQL: INSERT INTO params ("key", value, run_uuid) VALUES (?, ?, ?)]
+[parameters: ('Model_name', 'Ridge', 'f6f5b59f9e3b414c8a6da34a707ee122')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 411, in log_param
+    self.store.log_param(run_id, param)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\store\tracking\sqlalchemy_store.py", line 1260, in log_param
+    raise MlflowException(
+    ...<4 lines>...
+    )
+mlflow.exceptions.MlflowException: Changing param values is not allowed. Param with key='Model_name' was already logged with value='LinearRegression' for run ID='f6f5b59f9e3b414c8a6da34a707ee122'. Attempted logging new value 'Ridge'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 48, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 36, in main
+    make_model(X_train_scaled, X_test_scaled, y_train, y_test, Ridge(), 'Ridge',df_models_comp)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\train.py", line 60, in make_model
+    mlflow.log_param("Model_name", model_name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\tracking\fluent.py", line 776, in log_param
+    return MlflowClient().log_param(run_id, key, value, synchronous=synchronous)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\tracking\client.py", line 2166, in log_param
+    self._tracking_client.log_param(run_id, key, value, synchronous=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\telemetry\track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 418, in log_param
+    raise MlflowException(msg, INVALID_PARAMETER_VALUE)
+mlflow.exceptions.MlflowException: Changing param values is not allowed. Param with key='Model_name' was already logged with value='LinearRegression' for run ID='f6f5b59f9e3b414c8a6da34a707ee122'. Attempted logging new value 'Ridge'.
+
+The cause of this error is typically due to repeated calls
+to an individual run_id event logging.
+
+Incorrect Example:
+---------------------------------------
+with mlflow.start_run():
+    mlflow.log_param("depth", 3)
+    mlflow.log_param("depth", 5)
+---------------------------------------
+
+Which will throw an MlflowException for overwriting a
+logged parameter.
+
+Correct Example:
+---------------------------------------
+with mlflow.start_run():
+    with mlflow.start_run(nested=True):
+        mlflow.log_param("depth", 3)
+    with mlflow.start_run(nested=True):
+        mlflow.log_param("depth", 5)
+---------------------------------------
+
+Which will create a new nested run for each individual
+model and prevent parameter key collisions within the
+tracking store.
+2025-10-22 21:38:08,855 - INFO - 2025-10-22 21:38:08.855244:Initialising the train.py script connection
+2025-10-22 21:38:14,399 - INFO - 2025-10-22 21:38:14.399677:Data Cleaned and Split
+2025-10-22 21:38:14,579 - INFO - 2025-10-22 21:38:14.579546:Ran LinearRegression models to compare performance
+2025-10-22 21:38:14,793 - INFO - 2025-10-22 21:38:14.793214:Ran Ridge models to compare performance
+2025-10-22 21:46:03,636 - INFO - 2025-10-22 21:46:03.636288:Initialising the train.py script connection
+2025-10-22 21:46:05,586 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 18, in <module>
+    mlflow.set_experiment(EXPERIMENT_NAME)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\mlflow\tracking\fluent.py", line 210, in set_experiment
+    raise MlflowException(
+    ...<7 lines>...
+    )
+mlflow.exceptions.MlflowException: Cannot set a deleted experiment 'temperature_model_experiments' as the active experiment. You can restore the experiment, or permanently delete the experiment to create a new one.
+2025-10-22 21:47:11,402 - INFO - 2025-10-22 21:47:11.401959:Initialising the train.py script connection
+2025-10-22 21:47:16,126 - INFO - 2025-10-22 21:47:16.126091:Data Cleaned and Split
+2025-10-22 21:47:16,313 - INFO - 2025-10-22 21:47:16.313540:Ran LinearRegression models to compare performance
+2025-10-22 21:47:16,469 - INFO - 2025-10-22 21:47:16.469056:Ran Ridge models to compare performance
+2025-10-22 21:47:16,635 - INFO - 2025-10-22 21:47:16.635461:Ran Lasso models to compare performance
+2025-10-22 21:47:16,857 - INFO - 2025-10-22 21:47:16.857928:Ran ElasticNet models to compare performance
+2025-10-22 21:47:33,576 - INFO - 2025-10-22 21:47:33.576175:Ran GradientBoosting models to compare performance
+2025-10-22 21:48:43,940 - INFO - 2025-10-22 21:48:43.940388:Ran RandomForest models to compare performance
+2025-10-22 21:48:45,518 - INFO - 2025-10-22 21:48:45.518890:Ran XGBoost models to compare performance
+2025-10-22 21:48:46,360 - INFO - 2025-10-22 21:48:46.360596:plot_to_compare_models
+2025-10-22 21:48:46,361 - INFO - 2025-10-22 21:48:46.361178:Finding Lowest RMSE
+2025-10-22 21:48:46,428 - INFO - 2025-10-22 21:48:46.427962:GradientBoosting IS RUN AND SAVED IN MODELS DIR
+2025-10-22 21:50:51,940 - INFO - 2025-10-22 21:50:51.939915:Actual vs Pred PLOT
+2025-10-22 21:51:03,222 - INFO - 2025-10-22 21:51:03.222831:Actual vs Pred PLOT

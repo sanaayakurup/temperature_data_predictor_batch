@@ -1,2 +1,0 @@
-2025-10-21 15:48:11,220 - INFO - 2025-10-21 15:48:11.220277:Initialising the API connection
-2025-10-21 15:48:14,241 - INFO - 2025-10-21 15:48:14.240946:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2019-12-31', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}

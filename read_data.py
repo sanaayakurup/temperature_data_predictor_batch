@@ -13,10 +13,12 @@ from utils import setup_logger
 import logging
 import datetime
 from datetime import date
+import os 
+
 
 #https://open-meteo.com/en/features#available_apis
 
-my_logger = setup_logger('my_temperature_logger', 'read_data.log', level=logging.DEBUG)
+my_logger = setup_logger('my_temperature_logger', 'logs_for_ml.log')
 my_logger.info(f"{datetime.datetime.now()}:Initialising the API connection")
 
 try: 
@@ -63,7 +65,7 @@ try:
         all_dfs.append(df)
     combined_df = pd.concat(all_dfs, ignore_index=True)
     my_logger.info(f"{datetime.datetime.now()}:Data Pulled in for params {params}")
-    combined_df.to_csv(f'temp_data_{date.today()}.csv')        
+    combined_df.to_csv(f'./data/temp_data_{date.today()}.csv')        
 except Exception as e:
     print(e)
     my_logger.info(f"{datetime.datetime.now()}:Error!:{e}")
