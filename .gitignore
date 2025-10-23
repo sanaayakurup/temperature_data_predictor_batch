@@ -2,3 +2,11 @@
  *.csv
  *.ipynb
  *.env
+
+
+/mlruns/
+/data/
+/cache
+/venv/
+.env/
+.venv/

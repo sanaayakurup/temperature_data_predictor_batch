@@ -22,7 +22,7 @@ my_logger = setup_logger('my_temperature_logger', 'logs_for_ml.log')
 my_logger.info(f"{datetime.datetime.now()}:Initialising the train.py script connection")
 
 
-def read_and_clean_data(path):
+def read_and_clean_data(path,train_upper_date,test_lower_date):
     """
     Define a function to read in the data, clean, and split into train and test,
     and also scale the data for linear models
@@ -31,10 +31,14 @@ def read_and_clean_data(path):
     data.date=pd.to_datetime(data.date)
     location_map={'Pune':1,'Mississauga':2}
     data.location=data.location.map(location_map)
-    train_data=data.query('date<"2019-01-01 00:00:00+0000"')
-    test_data=data.query('date>="2019 00:00:00+0000"')
+    train_data=data.query(f'date<="{train_upper_date}"') #train_upper_date
+    test_data=data.query(f'date>="{test_lower_date}"') #test_lower_date
     train_data.set_index('date',inplace=True)
     test_data.set_index('date',inplace=True)
+    my_logger.info(f"{datetime.datetime.now()}:Testmin Min max date{test_data.index.min(),test_data.index.max()}")
+    my_logger.info(f"{datetime.datetime.now()}:Train Min  max date{train_data.index.min(),train_data.index.max()}")
+    my_logger.info(f"{datetime.datetime.now()}:Test Shape {test_data.shape}")
+    my_logger.info(f"{datetime.datetime.now()}:Train Shape {train_data.shape}")
     X_train=train_data.drop(columns='temperature_2m')
     y_train=train_data['temperature_2m']
     X_test=test_data.drop(columns='temperature_2m')
@@ -42,6 +46,18 @@ def read_and_clean_data(path):
     scaler=MinMaxScaler()
     X_train_scaled=scaler.fit_transform(X_train)
     X_test_scaled=scaler.transform(X_test)
+    my_logger.info(f"X_train Shape:{X_train.shape}")
+    my_logger.info(f"X_test Shape:{X_test.shape}")
+    my_logger.info(f"X_train_scaled Shape:{X_train_scaled.shape}")
+    my_logger.info(f"X_test_scaled Shape:{X_test_scaled.shape}")
+    my_logger.info(f"y_train Shape:{y_train.shape}")
+    my_logger.info(f"y_test Shape:{y_test.shape}")
+    my_logger.info(f"Type X train Shape:{type(X_train)}")
+    #log data to mlflow-test, train, data
+    mlflow.log_input(mlflow.data.from_pandas(X_train), context="training_features")
+    mlflow.log_input(mlflow.data.from_pandas(X_test), context="testing_features")
+    mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_train)), context="Y train")
+    mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_test)), context="Y test")
     my_logger.info(f"{datetime.datetime.now()}:Data Cleaned and Split")
     return X_train,X_test,X_train_scaled,X_test_scaled,y_train,y_test
 
@@ -57,7 +73,7 @@ def make_model(X_train,X_test,y_train,y_test,model,model_name,df_models_comp):
     rmse_train=np.sqrt(mean_squared_error(y_train,y_train_pred))
     rmse_test=np.sqrt(mean_squared_error(y_test,y_test_pred))
     df_models_comp.loc[len(df_models_comp.index)] = [model_name, rmse_train, rmse_test]
-    # === Log to MLflow ===
+    # === Log trials to MLflow ===
     with mlflow.start_run(run_name=model_name, nested=True):
         mlflow.log_param("model_name", model_name)
         mlflow.log_metric("rmse_train", rmse_train)
@@ -81,8 +97,8 @@ def find_lowest_rmse(df_models_comp):
     """
     Finds the model with the lowest RMSE Train
     """
-    my_logger.info(f"{datetime.datetime.now()}:Finding Lowest RMSE")
-
+    my_logger.info(f"{datetime.datetime.now()}:Model w Lowest TEST RMSE:{df_models_comp.sort_values(by=['rmse_test','rmse_train']).iloc[0]['model_name']}")
+    my_logger.info(f"{datetime.datetime.now()}:Value Lowest RMSE:{df_models_comp.sort_values(by=['rmse_test','rmse_train']).iloc[0]['rmse_test']}")
     return df_models_comp.sort_values(by=['rmse_test','rmse_train']).iloc[0]['model_name']
     
 
@@ -129,9 +145,11 @@ def objective(trial,X_train, X_test, y_train, y_test):
    
 def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_scaled,X_test_scaled):
     if name_of_best_model=='XGBoost':
+        # Wrap  objective to include the data
+        objective_with_data = lambda trial: objective(trial, X_train, X_test, y_train, y_test)
         # set seed for Optuna
         study = optuna.create_study(direction="minimize", sampler=optuna.samplers.TPESampler(seed=seed_value))
-        study.optimize(objective, n_trials=500, timeout=600)  # Increase for more trials
+        study.optimize(objective_with_data, n_trials=10, timeout=600)  # Increase for more trials
         best_params = study.best_params
         best_RMSE = study.best_value
         print(f"Best Hyperparameters : {best_params}")
@@ -143,7 +161,13 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         error = np.sqrt(mean_squared_error(y_test, y_pred))
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(best_model, model_file)
+        #log as an artifact in mlflow
+        mlflow.sklearn.log_model(
+        sk_model=best_model,
+        artifact_path="xgboost_reg_model",
+        registered_model_name="XGB model") 
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")      
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {error}")      
         return y_pred,error
     elif name_of_best_model=='LinearRegression':
         model=LinearRegression()
@@ -153,6 +177,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(model, model_file)
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {rmse_test}")      
         return y_pred,rmse_test
     elif name_of_best_model=='Ridge':
         model=Ridge()
@@ -162,6 +187,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(model, model_file)
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {rmse_test}")      
         return y_pred,rmse_test
 
     elif name_of_best_model=='RandomForest':
@@ -172,6 +198,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(model, model_file)
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {rmse_test}")      
         return y_pred,rmse_test        
     elif name_of_best_model=='Lasso':
         model=Lasso()
@@ -180,6 +207,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         rmse_test=np.sqrt(mean_squared_error(y_test,y_pred))
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(model, model_file)
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {rmse_test}")      
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")
         return y_pred,rmse_test
   
@@ -190,6 +218,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         rmse_test=np.sqrt(mean_squared_error(y_test,y_pred))
         with open(f'./models/{name_of_best_model}.pkl', 'wb') as model_file:                  
             pickle.dump(model, model_file)
+        my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} has RMSE {rmse_test}")      
         my_logger.info(f"{datetime.datetime.now()}:{name_of_best_model} IS RUN AND SAVED IN MODELS DIR")
         return y_pred,rmse_test
    
@@ -197,6 +226,8 @@ def plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model):
     actual_vs_pred_test=pd.concat([y_test.reset_index(), pd.DataFrame(y_pred)], axis=1)
     actual_vs_pred_test.columns=['date', 'actual_temp', 'pred_temp']
     actual_vs_pred_test_w_location=pd.concat([actual_vs_pred_test,pd.DataFrame(X_test.location).reset_index(drop=True)],axis=1)
+    #log this in mlflow
+    mlflow.log_input(mlflow.data.from_pandas(actual_vs_pred_test_w_location), context="actual vs pred df")
     for i in actual_vs_pred_test_w_location.location.unique():
         filt_data=actual_vs_pred_test_w_location.query(f"location=={i}")
         fig = go.Figure()
@@ -220,5 +251,15 @@ def plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model):
         )
 
         fig.show()
-        my_logger.info(f"{datetime.datetime.now()}:Actual vs Pred PLOT")
+        plot_path = f"actual_vs_predicted_{i}.png"
+        fig.savefig(plot_path)
 
+        # Log the plot as an artifact
+        mlflow.log_artifact(plot_path, "plots") # "plots" is an optional subdirectory within the artifacts
+
+
+    plt.close(fig) # Close the plot to free up memory
+    my_logger.info(f"{datetime.datetime.now()}:Actual vs Pred PLOT SAVED")
+
+if __name__=="__main__":
+    read_and_clean_data('./data/temp_data_all_2025-10-23.csv','2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
