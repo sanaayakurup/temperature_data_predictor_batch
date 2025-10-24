@@ -1,345 +1,242 @@
-2025-10-23 13:41:21,068 - INFO - 2025-10-23 13:41:21.068780:Initialising the train.py script connection
-2025-10-23 13:41:21,548 - INFO - 2025-10-23 13:41:21.548196:Initialising the API connection
-2025-10-23 13:41:24,878 - INFO - 2025-10-23 13:41:24.878476:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 13:41:33,592 - INFO - 2025-10-23 13:41:33.591649:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-23 23:00:00+0000', tz='UTC'))
-2025-10-23 13:41:33,599 - INFO - 2025-10-23 13:41:33.595896:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
-2025-10-23 13:41:33,601 - INFO - 2025-10-23 13:41:33.601432:Test Shape (14208, 7)
-2025-10-23 13:41:33,602 - INFO - 2025-10-23 13:41:33.602754:Train Shape (262946, 7)
-2025-10-23 13:41:33,784 - INFO - X_train Shape:(262946, 6)
-2025-10-23 13:41:33,832 - INFO - X_test Shape:(14208, 6)
-2025-10-23 13:41:33,835 - INFO - X_train_scaled Shape:(262946, 6)
-2025-10-23 13:41:33,841 - INFO - X_test_scaled Shape:(14208, 6)
-2025-10-23 13:41:33,850 - INFO - y_train Shape:(262946,)
-2025-10-23 13:41:33,852 - INFO - y_test Shape:(14208,)
-2025-10-23 13:41:33,855 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
-2025-10-23 13:41:38,235 - INFO - 2025-10-23 13:41:38.235278:Data Cleaned and Split
-2025-10-23 13:41:38,503 - INFO - 2025-10-23 13:41:38.503401:Ran LinearRegression models to compare performance
-2025-10-23 13:41:38,682 - INFO - 2025-10-23 13:41:38.682403:Ran Ridge models to compare performance
-2025-10-23 13:41:38,858 - INFO - 2025-10-23 13:41:38.857961:Ran Lasso models to compare performance
-2025-10-23 13:41:39,093 - INFO - 2025-10-23 13:41:39.093180:Ran ElasticNet models to compare performance
-2025-10-23 13:43:34,817 - INFO - 2025-10-23 13:43:34.817498:Ran RandomForest models to compare performance
-2025-10-23 13:43:37,936 - INFO - 2025-10-23 13:43:37.936293:Ran XGBoost models to compare performance
-2025-10-23 13:43:38,591 - INFO - 2025-10-23 13:43:38.591290:plot_to_compare_models
-2025-10-23 13:43:38,593 - INFO - 2025-10-23 13:43:38.591941:Model w Lowest TEST RMSE:XGBoost
-2025-10-23 13:43:38,595 - INFO - 2025-10-23 13:43:38.594223:Value Lowest RMSE:8.251454056474035
-2025-10-23 13:43:57,845 - INFO - 2025-10-23 13:43:57.845752:XGBoost IS RUN AND SAVED IN MODELS DIR
-2025-10-23 13:43:57,846 - INFO - 2025-10-23 13:43:57.846485:XGBoost has RMSE 9.042491993787268
-2025-10-23 13:46:06,543 - ERROR - Uncaught exception
+2025-10-24 12:04:03,464 - INFO - Main.py script started
+2025-10-24 12:04:05,016 - INFO - 2025-10-24 12:04:05.016792:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:04:13,892 - INFO - 2025-10-24 12:04:13.891851:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 12:04:13,898 - INFO - 2025-10-24 12:04:13.896084:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 12:04:13,900 - INFO - 2025-10-24 12:04:13.900061:Test Shape (14256, 7)
+2025-10-24 12:04:13,901 - INFO - 2025-10-24 12:04:13.901803:Train Shape (262946, 7)
+2025-10-24 12:04:14,009 - INFO - X_train Shape:(262946, 6)
+2025-10-24 12:04:14,013 - INFO - X_test Shape:(14256, 6)
+2025-10-24 12:04:14,014 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 12:04:14,015 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 12:04:14,016 - INFO - y_train Shape:(262946,)
+2025-10-24 12:04:14,017 - INFO - y_test Shape:(14256,)
+2025-10-24 12:04:14,017 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 12:04:23,002 - INFO - 2025-10-24 12:04:23.002751:Data Cleaned and Split
+2025-10-24 12:04:23,638 - INFO - 2025-10-24 12:04:23.638343:Ran LinearRegression models to compare performance
+2025-10-24 12:04:23,958 - INFO - 2025-10-24 12:04:23.958748:Ran Ridge models to compare performance
+2025-10-24 12:04:24,305 - INFO - 2025-10-24 12:04:24.305206:Ran Lasso models to compare performance
+2025-10-24 12:04:25,670 - INFO - 2025-10-24 12:04:25.670062:Ran ElasticNet models to compare performance
+2025-10-24 12:07:05,956 - INFO - 2025-10-24 12:07:05.956846:Ran RandomForest models to compare performance
+2025-10-24 12:07:09,153 - INFO - 2025-10-24 12:07:09.153522:Ran XGBoost models to compare performance
+2025-10-24 12:07:09,861 - INFO - 2025-10-24 12:07:09.860993:plot_to_compare_models
+2025-10-24 12:07:09,864 - INFO - 2025-10-24 12:07:09.861875:Model w Lowest TEST RMSE:XGBoost
+2025-10-24 12:07:09,867 - INFO - 2025-10-24 12:07:09.865219:Value Lowest RMSE:8.240625547566271
+2025-10-24 12:07:40,813 - INFO - 2025-10-24 12:07:40.813821:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 12:07:40,816 - INFO - 2025-10-24 12:07:40.816275:XGBoost has RMSE 9.026397070626315
+2025-10-24 12:07:40,846 - ERROR - Uncaught exception
 Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 51, in <module>
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 63, in <module>
     main()
     ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 48, in main
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 59, in main
     plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model)
     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\train.py", line 255, in plot_actual_vs_pred
-    fig.savefig(plot_path)
-    ^^^^^^^^^^^
-AttributeError: 'Figure' object has no attribute 'savefig'
-2025-10-23 13:52:11,000 - INFO - 2025-10-23 13:52:11.000284:Initialising the train.py script connection
-2025-10-23 13:52:11,489 - INFO - 2025-10-23 13:52:11.489607:Initialising the API connection
-2025-10-23 13:52:15,179 - INFO - 2025-10-23 13:52:15.179758:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 13:52:24,188 - INFO - 2025-10-23 13:52:24.188283:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-23 23:00:00+0000', tz='UTC'))
-2025-10-23 13:52:24,192 - INFO - 2025-10-23 13:52:24.189658:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
-2025-10-23 13:52:24,193 - INFO - 2025-10-23 13:52:24.193708:Test Shape (14208, 7)
-2025-10-23 13:52:24,196 - INFO - 2025-10-23 13:52:24.196826:Train Shape (262946, 7)
-2025-10-23 13:52:24,266 - INFO - X_train Shape:(262946, 6)
-2025-10-23 13:52:24,266 - INFO - X_test Shape:(14208, 6)
-2025-10-23 13:52:24,267 - INFO - X_train_scaled Shape:(262946, 6)
-2025-10-23 13:52:24,268 - INFO - X_test_scaled Shape:(14208, 6)
-2025-10-23 13:52:24,269 - INFO - y_train Shape:(262946,)
-2025-10-23 13:52:24,270 - INFO - y_test Shape:(14208,)
-2025-10-23 13:52:24,270 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
-2025-10-23 13:52:30,835 - INFO - 2025-10-23 13:52:30.835152:Data Cleaned and Split
-2025-10-23 13:52:31,205 - INFO - 2025-10-23 13:52:31.205319:Ran LinearRegression models to compare performance
-2025-10-23 13:52:31,520 - INFO - 2025-10-23 13:52:31.520286:Ran Ridge models to compare performance
-2025-10-23 13:52:31,936 - INFO - 2025-10-23 13:52:31.936334:Ran Lasso models to compare performance
-2025-10-23 13:52:32,526 - INFO - 2025-10-23 13:52:32.526707:Ran ElasticNet models to compare performance
-2025-10-23 13:54:26,550 - INFO - 2025-10-23 13:54:26.550717:Ran RandomForest models to compare performance
-2025-10-23 13:54:29,408 - INFO - 2025-10-23 13:54:29.408648:Ran XGBoost models to compare performance
-2025-10-23 13:54:29,936 - INFO - 2025-10-23 13:54:29.936307:plot_to_compare_models
-2025-10-23 13:54:29,939 - INFO - 2025-10-23 13:54:29.937011:Model w Lowest TEST RMSE:XGBoost
-2025-10-23 13:54:29,942 - INFO - 2025-10-23 13:54:29.940063:Value Lowest RMSE:8.251454056474035
-2025-10-23 13:54:47,614 - INFO - 2025-10-23 13:54:47.614485:XGBoost IS RUN AND SAVED IN MODELS DIR
-2025-10-23 13:54:47,624 - INFO - 2025-10-23 13:54:47.624689:XGBoost has RMSE 9.041094340655711
-2025-10-23 13:55:32,662 - ERROR - Uncaught exception
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 51, in <module>
-    main()
-    ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 48, in main
-    plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\train.py", line 260, in plot_actual_vs_pred
-    plt.close(fig) # Close the plot to free up memory
-    ~~~~~~~~~^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\matplotlib\pyplot.py", line 1209, in close
-    raise TypeError("close() argument must be a Figure, an int, a string, "
-                    "or None, not %s" % type(fig))
-TypeError: close() argument must be a Figure, an int, a string, or None, not <class 'plotly.graph_objs._figure.Figure'>
-2025-10-23 13:58:47,033 - INFO - 2025-10-23 13:58:47.033504:Initialising the train.py script connection
-2025-10-23 13:58:47,495 - INFO - 2025-10-23 13:58:47.495021:Initialising the API connection
-2025-10-23 13:58:50,886 - INFO - 2025-10-23 13:58:50.886125:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 13:59:00,022 - INFO - 2025-10-23 13:59:00.021273:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-23 23:00:00+0000', tz='UTC'))
-2025-10-23 13:59:00,031 - INFO - 2025-10-23 13:59:00.026834:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
-2025-10-23 13:59:00,032 - INFO - 2025-10-23 13:59:00.032784:Test Shape (14208, 7)
-2025-10-23 13:59:00,034 - INFO - 2025-10-23 13:59:00.034770:Train Shape (262946, 7)
-2025-10-23 13:59:00,115 - INFO - X_train Shape:(262946, 6)
-2025-10-23 13:59:00,116 - INFO - X_test Shape:(14208, 6)
-2025-10-23 13:59:00,117 - INFO - X_train_scaled Shape:(262946, 6)
-2025-10-23 13:59:00,117 - INFO - X_test_scaled Shape:(14208, 6)
-2025-10-23 13:59:00,118 - INFO - y_train Shape:(262946,)
-2025-10-23 13:59:00,119 - INFO - y_test Shape:(14208,)
-2025-10-23 13:59:00,120 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
-2025-10-23 13:59:04,630 - INFO - 2025-10-23 13:59:04.630676:Data Cleaned and Split
-2025-10-23 13:59:04,966 - INFO - 2025-10-23 13:59:04.966241:Ran LinearRegression models to compare performance
-2025-10-23 13:59:05,203 - INFO - 2025-10-23 13:59:05.203576:Ran Ridge models to compare performance
-2025-10-23 13:59:05,400 - INFO - 2025-10-23 13:59:05.400075:Ran Lasso models to compare performance
-2025-10-23 13:59:05,601 - INFO - 2025-10-23 13:59:05.601805:Ran ElasticNet models to compare performance
-2025-10-23 14:01:06,214 - INFO - 2025-10-23 14:01:06.214189:Ran RandomForest models to compare performance
-2025-10-23 14:01:09,569 - INFO - 2025-10-23 14:01:09.569376:Ran XGBoost models to compare performance
-2025-10-23 14:01:10,185 - INFO - 2025-10-23 14:01:10.185889:plot_to_compare_models
-2025-10-23 14:01:10,188 - INFO - 2025-10-23 14:01:10.186545:Model w Lowest TEST RMSE:XGBoost
-2025-10-23 14:01:10,190 - INFO - 2025-10-23 14:01:10.188938:Value Lowest RMSE:8.251454056474035
-2025-10-23 14:01:28,309 - INFO - 2025-10-23 14:01:28.309456:XGBoost IS RUN AND SAVED IN MODELS DIR
-2025-10-23 14:01:28,310 - INFO - 2025-10-23 14:01:28.310361:XGBoost has RMSE 9.041721107958663
-2025-10-23 14:03:30,383 - INFO - 2025-10-23 14:03:30.383561:Actual vs Pred PLOT SAVED
-2025-10-23 15:20:19,769 - INFO - 2025-10-23 15:20:19.769551:Initialising the train.py script connection
-2025-10-23 15:20:20,286 - INFO - 2025-10-23 15:20:20.286831:Initialising the API connection
-2025-10-23 15:20:23,791 - INFO - 2025-10-23 15:20:23.791326:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 15:20:33,135 - INFO - 2025-10-23 15:20:33.134574:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-23 23:00:00+0000', tz='UTC'))
-2025-10-23 15:20:33,147 - INFO - 2025-10-23 15:20:33.141981:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
-2025-10-23 15:20:33,161 - INFO - 2025-10-23 15:20:33.161238:Test Shape (14208, 7)
-2025-10-23 15:20:33,191 - INFO - 2025-10-23 15:20:33.191626:Train Shape (262946, 7)
-2025-10-23 15:20:33,321 - INFO - X_train Shape:(262946, 6)
-2025-10-23 15:20:33,337 - INFO - X_test Shape:(14208, 6)
-2025-10-23 15:20:33,442 - INFO - X_train_scaled Shape:(262946, 6)
-2025-10-23 15:20:33,456 - INFO - X_test_scaled Shape:(14208, 6)
-2025-10-23 15:20:33,464 - INFO - y_train Shape:(262946,)
-2025-10-23 15:20:33,481 - INFO - y_test Shape:(14208,)
-2025-10-23 15:20:33,489 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
-2025-10-23 15:20:39,285 - INFO - 2025-10-23 15:20:39.285489:Data Cleaned and Split
-2025-10-23 15:20:39,495 - INFO - 2025-10-23 15:20:39.495656:Ran LinearRegression models to compare performance
-2025-10-23 15:20:39,689 - INFO - 2025-10-23 15:20:39.689244:Ran Ridge models to compare performance
-2025-10-23 15:20:39,882 - INFO - 2025-10-23 15:20:39.881969:Ran Lasso models to compare performance
-2025-10-23 15:20:40,161 - INFO - 2025-10-23 15:20:40.161341:Ran ElasticNet models to compare performance
-2025-10-23 15:23:02,249 - INFO - 2025-10-23 15:23:02.249355:Ran RandomForest models to compare performance
-2025-10-23 15:23:05,321 - INFO - 2025-10-23 15:23:05.321593:Ran XGBoost models to compare performance
-2025-10-23 15:23:06,646 - INFO - 2025-10-23 15:23:06.645953:plot_to_compare_models
-2025-10-23 15:23:06,650 - INFO - 2025-10-23 15:23:06.647841:Model w Lowest TEST RMSE:XGBoost
-2025-10-23 15:23:06,661 - INFO - 2025-10-23 15:23:06.659792:Value Lowest RMSE:8.251454056474035
-2025-10-23 15:23:32,570 - INFO - 2025-10-23 15:23:32.570793:XGBoost IS RUN AND SAVED IN MODELS DIR
-2025-10-23 15:23:32,571 - INFO - 2025-10-23 15:23:32.571605:XGBoost has RMSE 9.041748682224132
-2025-10-23 15:24:04,309 - INFO - 2025-10-23 15:24:04.309123:Actual vs Pred PLOT SAVED
-2025-10-23 16:23:29,617 - INFO - 2025-10-23 16:23:29.616981:Initialising the train.py script connection
-2025-10-23 16:23:30,101 - INFO - 2025-10-23 16:23:30.101700:Initialising the API connection
-2025-10-23 16:23:30,126 - INFO - 2025-10-23 16:23:30.125933:Initialising the inference.py script
-2025-10-23 16:23:33,722 - INFO - 2025-10-23 16:23:33.721994:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:23:33,780 - INFO - Hour Data Shape:(0, 8)(Shape Should be 24)
-2025-10-23 16:23:33,782 - INFO - Hour Data Min:NaT
-2025-10-23 16:23:33,783 - INFO - Hour Data Max:NaT
-2025-10-23 16:23:33,839 - ERROR - Uncaught exception
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 407, in pandas_feature_info
-    new_feature_types.append(_pandas_dtype_mapper[dtype.name])
-                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
-KeyError: 'datetime64[ns, UTC]'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 52, in <module>
-    main()
-    ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 49, in main
-    pull_data_for_inference(api_path,'XGBoost')
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\inference.py", line 42, in pull_data_for_inference
-    y_pred=model.predict(data_for_pred)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 774, in inner_f
-    return func(**kwargs)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\sklearn.py", line 1460, in predict
-    test = DMatrix(
-        X,
-    ...<4 lines>...
-        enable_categorical=self.enable_categorical,
-    )
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 774, in inner_f
-    return func(**kwargs)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 999, in __init__
-    handle, feature_names, feature_types = dispatch_data_backend(
-                                           ~~~~~~~~~~~~~~~~~~~~~^
-        data=data,
-        ^^^^^^^^^^
-    ...<5 lines>...
-        data_split_mode=data_split_mode,
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\train.py", line 191, in plot_actual_vs_pred
+    actual_vs_pred_test_w_location.to_csv(f'actual_vs_pred_test_w_location_{datetime.datetime.now()}.csv')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\pandas\core\generic.py", line 3989, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path_or_buf,
+        ^^^^^^^^^^^^
+    ...<14 lines>...
+        storage_options=storage_options,
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     )
     ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 1419, in dispatch_data_backend
-    return _from_pandas_df(
-        data=data,
-    ...<5 lines>...
-        data_split_mode=data_split_mode,
-    )
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 700, in _from_pandas_df
-    df, feature_names, feature_types = _transform_pandas_df(
-                                       ~~~~~~~~~~~~~~~~~~~~^
-        data, enable_categorical, feature_names, feature_types
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 662, in _transform_pandas_df
-    feature_names, feature_types = pandas_feature_info(
-                                   ~~~~~~~~~~~~~~~~~~~^
-        data, meta, feature_names, feature_types, enable_categorical
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 409, in pandas_feature_info
-    _invalid_dataframe_dtype(data)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 372, in _invalid_dataframe_dtype
-    raise ValueError(msg)
-ValueError: DataFrame.dtypes for data must be int, float, bool or category. When categorical type is supplied, the experimental DMatrix parameter`enable_categorical` must be set to `True`.  Invalid columns:date: datetime64[ns, UTC]
-2025-10-23 16:29:50,699 - INFO - 2025-10-23 16:29:50.699444:Initialising the API connection
-2025-10-23 16:29:50,751 - INFO - 2025-10-23 16:29:50.751569:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:30:57,978 - INFO - 2025-10-23 16:30:57.978552:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:31:37,165 - INFO - 2025-10-23 16:31:37.165873:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:33:03,039 - INFO - 2025-10-23 16:33:03.039632:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:34:10,042 - INFO - 2025-10-23 16:34:10.042092:Initialising the inference.py script
-2025-10-23 16:34:10,524 - INFO - 2025-10-23 16:34:10.524124:Initialising the API connection
-2025-10-23 16:34:52,326 - INFO - 2025-10-23 16:34:52.326871:Initialising the train.py script connection
-2025-10-23 16:34:52,719 - INFO - 2025-10-23 16:34:52.719277:Initialising the API connection
-2025-10-23 16:34:52,734 - INFO - 2025-10-23 16:34:52.734157:Initialising the inference.py script
-2025-10-23 16:34:56,005 - INFO - 2025-10-23 16:34:56.005800:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:34:56,036 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-23 16:34:56,037 - INFO - Hour Data Min:2025-10-23 20:00:00+00:00
-2025-10-23 16:34:56,038 - INFO - Hour Data Max:2025-10-23 20:00:00+00:00
-2025-10-23 16:34:56,091 - ERROR - Uncaught exception
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 407, in pandas_feature_info
-    new_feature_types.append(_pandas_dtype_mapper[dtype.name])
-                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
-KeyError: 'datetime64[ns, UTC]'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 52, in <module>
-    main()
-    ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 49, in main
-    pull_data_for_inference(api_path,'XGBoost')
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\inference.py", line 42, in pull_data_for_inference
-    y_pred=model.predict(data_for_pred)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 774, in inner_f
-    return func(**kwargs)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\sklearn.py", line 1460, in predict
-    test = DMatrix(
-        X,
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+         ~~~~~~~~~~^
+        self.filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
     ...<4 lines>...
-        enable_categorical=self.enable_categorical,
-    )
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 774, in inner_f
-    return func(**kwargs)
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\core.py", line 999, in __init__
-    handle, feature_names, feature_types = dispatch_data_backend(
-                                           ~~~~~~~~~~~~~~~~~~~~~^
-        data=data,
-        ^^^^^^^^^^
-    ...<5 lines>...
-        data_split_mode=data_split_mode,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
+        storage_options=self.storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
     ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 1419, in dispatch_data_backend
-    return _from_pandas_df(
-        data=data,
-    ...<5 lines>...
-        data_split_mode=data_split_mode,
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
     )
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 700, in _from_pandas_df
-    df, feature_names, feature_types = _transform_pandas_df(
-                                       ~~~~~~~~~~~~~~~~~~~~^
-        data, enable_categorical, feature_names, feature_types
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 662, in _transform_pandas_df
-    feature_names, feature_types = pandas_feature_info(
-                                   ~~~~~~~~~~~~~~~~~~~^
-        data, meta, feature_names, feature_types, enable_categorical
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 409, in pandas_feature_info
-    _invalid_dataframe_dtype(data)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\xgboost\data.py", line 372, in _invalid_dataframe_dtype
-    raise ValueError(msg)
-ValueError: DataFrame.dtypes for data must be int, float, bool or category. When categorical type is supplied, the experimental DMatrix parameter`enable_categorical` must be set to `True`.  Invalid columns:date: datetime64[ns, UTC]
-2025-10-23 16:48:07,727 - INFO - 2025-10-23 16:48:07.727432:Initialising the train.py script connection
-2025-10-23 16:48:08,153 - INFO - 2025-10-23 16:48:08.153646:Initialising the API connection
-2025-10-23 16:48:08,177 - INFO - 2025-10-23 16:48:08.177278:Initialising the inference.py script
-2025-10-23 16:48:11,505 - INFO - 2025-10-23 16:48:11.505389:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:48:11,549 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-23 16:48:11,556 - INFO - Hour Data Min:2025-10-23 20:00:00+00:00
-2025-10-23 16:48:11,558 - INFO - Hour Data Max:2025-10-23 20:00:00+00:00
-2025-10-23 16:48:11,590 - INFO - Y pred Shape:(2,)(Shape Should be 24)
-2025-10-23 16:48:11,643 - ERROR - Uncaught exception
+OSError: [Errno 22] Invalid argument: 'actual_vs_pred_test_w_location_2025-10-24 12:07:40.822760.csv'
+2025-10-24 12:12:15,227 - INFO - Main.py script started
+2025-10-24 12:12:16,713 - INFO - 2025-10-24 12:12:16.713409:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:12:25,061 - INFO - 2025-10-24 12:12:25.061013:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 12:12:25,065 - INFO - 2025-10-24 12:12:25.062920:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 12:12:25,066 - INFO - 2025-10-24 12:12:25.066704:Test Shape (14256, 7)
+2025-10-24 12:12:25,068 - INFO - 2025-10-24 12:12:25.068758:Train Shape (262946, 7)
+2025-10-24 12:12:25,150 - INFO - X_train Shape:(262946, 6)
+2025-10-24 12:12:25,151 - INFO - X_test Shape:(14256, 6)
+2025-10-24 12:12:25,152 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 12:12:25,158 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 12:12:25,160 - INFO - y_train Shape:(262946,)
+2025-10-24 12:12:25,162 - INFO - y_test Shape:(14256,)
+2025-10-24 12:12:25,165 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 12:12:30,053 - INFO - 2025-10-24 12:12:30.053832:Data Cleaned and Split
+2025-10-24 12:12:47,761 - INFO - 2025-10-24 12:12:47.761546:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 12:12:47,800 - INFO - 2025-10-24 12:12:47.800521:XGBoost has RMSE 9.026828402827778
+2025-10-24 12:12:47,836 - ERROR - Uncaught exception
 Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 52, in <module>
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 64, in <module>
     main()
     ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\main.py", line 49, in main
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 59, in main
+    plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\train.py", line 191, in plot_actual_vs_pred
+    actual_vs_pred_test_w_location.to_csv(f'actual_vs_pred_test_w_location_{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.csv')
+                                                                            ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+2025-10-24 12:21:04,108 - INFO - Main.py script started
+2025-10-24 12:21:05,509 - INFO - 2025-10-24 12:21:05.509840:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:21:14,163 - INFO - 2025-10-24 12:21:14.162584:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 12:21:14,166 - INFO - 2025-10-24 12:21:14.164375:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 12:21:14,167 - INFO - 2025-10-24 12:21:14.167642:Test Shape (14256, 7)
+2025-10-24 12:21:14,168 - INFO - 2025-10-24 12:21:14.168517:Train Shape (262946, 7)
+2025-10-24 12:21:14,302 - INFO - X_train Shape:(262946, 6)
+2025-10-24 12:21:14,310 - INFO - X_test Shape:(14256, 6)
+2025-10-24 12:21:14,329 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 12:21:14,331 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 12:21:14,342 - INFO - y_train Shape:(262946,)
+2025-10-24 12:21:14,344 - INFO - y_test Shape:(14256,)
+2025-10-24 12:21:14,367 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 12:21:19,329 - INFO - 2025-10-24 12:21:19.329486:Data Cleaned and Split
+2025-10-24 12:21:40,585 - INFO - 2025-10-24 12:21:40.585755:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 12:21:40,587 - INFO - 2025-10-24 12:21:40.586962:XGBoost has RMSE 9.026895115078192
+2025-10-24 12:24:37,923 - INFO - 2025-10-24 12:24:37.923757:Actual vs Pred PLOT SAVED
+2025-10-24 12:24:37,938 - INFO - 2025-10-24 12:24:37.938239:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:24:37,989 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 64, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 60, in main
     pull_data_for_inference(api_path,'XGBoost')
     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\inference.py", line 44, in pull_data_for_inference
-    mlflow.data.from_pandas(pd.DataFrame(y_pred), context="preds_for_hour")
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: from_pandas() got an unexpected keyword argument 'context'
-2025-10-23 16:52:17,421 - INFO - 2025-10-23 16:52:17.421821:Initialising the train.py script connection
-2025-10-23 16:52:17,828 - INFO - 2025-10-23 16:52:17.828488:Initialising the API connection
-2025-10-23 16:52:17,850 - INFO - 2025-10-23 16:52:17.850534:Initialising the inference.py script
-2025-10-23 16:52:21,124 - INFO - 2025-10-23 16:52:21.124818:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-23', 'end_date': '2025-10-23', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-23 16:52:21,158 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-23 16:52:21,161 - INFO - Hour Data Min:2025-10-23 20:00:00+00:00
-2025-10-23 16:52:21,162 - INFO - Hour Data Max:2025-10-23 20:00:00+00:00
-2025-10-23 16:52:21,199 - INFO - Y pred Shape:(2,)(Shape Should be 2)
-2025-10-24 10:59:21,583 - INFO - 2025-10-24 10:59:21.583060:Initialising the API connection
-2025-10-24 10:59:21,659 - INFO - 2025-10-24 10:59:21.659563:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-24 11:01:49,757 - INFO - 2025-10-24 11:01:49.757903:Initialising the train.py script connection
-2025-10-24 11:01:51,265 - INFO - 2025-10-24 11:01:51.265260:Initialising the API connection
-2025-10-24 11:01:51,304 - INFO - 2025-10-24 11:01:51.304651:Initialising the inference.py script
-2025-10-24 11:01:54,682 - INFO - 2025-10-24 11:01:54.682475:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-24 11:02:04,909 - INFO - 2025-10-24 11:02:04.906168:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
-2025-10-24 11:02:04,914 - INFO - 2025-10-24 11:02:04.910109:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
-2025-10-24 11:02:04,915 - INFO - 2025-10-24 11:02:04.915353:Test Shape (14256, 7)
-2025-10-24 11:02:04,916 - INFO - 2025-10-24 11:02:04.916633:Train Shape (262946, 7)
-2025-10-24 11:02:05,010 - INFO - X_train Shape:(262946, 6)
-2025-10-24 11:02:05,011 - INFO - X_test Shape:(14256, 6)
-2025-10-24 11:02:05,016 - INFO - X_train_scaled Shape:(262946, 6)
-2025-10-24 11:02:05,017 - INFO - X_test_scaled Shape:(14256, 6)
-2025-10-24 11:02:05,018 - INFO - y_train Shape:(262946,)
-2025-10-24 11:02:05,019 - INFO - y_test Shape:(14256,)
-2025-10-24 11:02:05,023 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
-2025-10-24 11:02:10,995 - INFO - 2025-10-24 11:02:10.995202:Data Cleaned and Split
-2025-10-24 11:02:11,206 - INFO - 2025-10-24 11:02:11.206077:Ran LinearRegression models to compare performance
-2025-10-24 11:02:11,425 - INFO - 2025-10-24 11:02:11.425390:Ran Ridge models to compare performance
-2025-10-24 11:02:11,603 - INFO - 2025-10-24 11:02:11.603738:Ran Lasso models to compare performance
-2025-10-24 11:02:11,811 - INFO - 2025-10-24 11:02:11.811721:Ran ElasticNet models to compare performance
-2025-10-24 11:04:05,001 - INFO - 2025-10-24 11:04:05.001031:Ran RandomForest models to compare performance
-2025-10-24 11:04:08,267 - INFO - 2025-10-24 11:04:08.266954:Ran XGBoost models to compare performance
-2025-10-24 11:04:09,212 - INFO - 2025-10-24 11:04:09.212258:plot_to_compare_models
-2025-10-24 11:04:09,240 - INFO - 2025-10-24 11:04:09.224906:Model w Lowest TEST RMSE:XGBoost
-2025-10-24 11:04:09,246 - INFO - 2025-10-24 11:04:09.243718:Value Lowest RMSE:8.240625547566271
-2025-10-24 11:04:36,417 - INFO - 2025-10-24 11:04:36.417033:XGBoost IS RUN AND SAVED IN MODELS DIR
-2025-10-24 11:04:36,418 - INFO - 2025-10-24 11:04:36.417944:XGBoost has RMSE 9.02673526149735
-2025-10-24 11:06:50,137 - INFO - 2025-10-24 11:06:50.137129:Actual vs Pred PLOT SAVED
-2025-10-24 11:06:50,163 - INFO - 2025-10-24 11:06:50.163118:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-24 11:06:50,271 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-24 11:06:50,283 - INFO - Hour Data Min:2025-10-24 15:00:00+00:00
-2025-10-24 11:06:50,287 - INFO - Hour Data Max:2025-10-24 15:00:00+00:00
-2025-10-24 11:06:50,335 - INFO - Y pred Shape:(2,)(Shape Should be 2)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 28, in pull_data_for_inference
+    current_utc_hour=datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+                     ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+2025-10-24 12:32:49,718 - INFO - Main.py script started
+2025-10-24 12:32:51,364 - INFO - 2025-10-24 12:32:51.363847:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:33:00,516 - INFO - 2025-10-24 12:33:00.515339:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 12:33:00,520 - INFO - 2025-10-24 12:33:00.517444:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 12:33:00,522 - INFO - 2025-10-24 12:33:00.521907:Test Shape (14256, 7)
+2025-10-24 12:33:00,523 - INFO - 2025-10-24 12:33:00.523665:Train Shape (262946, 7)
+2025-10-24 12:33:00,618 - INFO - X_train Shape:(262946, 6)
+2025-10-24 12:33:00,618 - INFO - X_test Shape:(14256, 6)
+2025-10-24 12:33:00,619 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 12:33:00,620 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 12:33:00,621 - INFO - y_train Shape:(262946,)
+2025-10-24 12:33:00,621 - INFO - y_test Shape:(14256,)
+2025-10-24 12:33:00,622 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 12:33:05,276 - INFO - 2025-10-24 12:33:05.276501:Data Cleaned and Split
+2025-10-24 12:33:23,335 - INFO - 2025-10-24 12:33:23.335834:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 12:33:23,337 - INFO - 2025-10-24 12:33:23.337448:XGBoost has RMSE 9.027680132470765
+2025-10-24 12:33:23,363 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 65, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 60, in main
+    plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\train.py", line 191, in plot_actual_vs_pred
+    actual_vs_pred_test_w_location.to_csv(f'actual_vs_pred_test_w_location_{datetime.datetime.now(timezone.utc).strftime('%Y-%m-%d')}.csv')
+                                                                                                  ^^^^^^^^
+NameError: name 'timezone' is not defined
+2025-10-24 12:49:44,651 - INFO - Main.py script started
+2025-10-24 12:49:46,081 - INFO - 2025-10-24 12:49:46.081627:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:49:54,808 - INFO - 2025-10-24 12:49:54.807568:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 12:49:54,812 - INFO - 2025-10-24 12:49:54.809122:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 12:49:54,813 - INFO - 2025-10-24 12:49:54.813177:Test Shape (14256, 7)
+2025-10-24 12:49:54,814 - INFO - 2025-10-24 12:49:54.814270:Train Shape (262946, 7)
+2025-10-24 12:49:54,902 - INFO - X_train Shape:(262946, 6)
+2025-10-24 12:49:54,903 - INFO - X_test Shape:(14256, 6)
+2025-10-24 12:49:54,908 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 12:49:54,911 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 12:49:54,913 - INFO - y_train Shape:(262946,)
+2025-10-24 12:49:54,914 - INFO - y_test Shape:(14256,)
+2025-10-24 12:49:54,916 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 12:49:59,765 - INFO - 2025-10-24 12:49:59.765783:Data Cleaned and Split
+2025-10-24 12:50:18,666 - INFO - 2025-10-24 12:50:18.666106:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 12:50:18,667 - INFO - 2025-10-24 12:50:18.667403:XGBoost has RMSE 9.026909951031229
+2025-10-24 12:53:48,188 - INFO - 2025-10-24 12:53:48.188780:Actual vs Pred PLOT SAVED
+2025-10-24 12:53:48,202 - INFO - 2025-10-24 12:53:48.202158:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 12:53:48,271 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 65, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\main.py", line 61, in main
+    pull_data_for_inference(api_path,'XGBoost')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 28, in pull_data_for_inference
+    current_utc_hour=datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+                     ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+2025-10-24 13:07:53,635 - INFO - Main.py script started
+2025-10-24 13:07:55,398 - INFO - 2025-10-24 13:07:55.397975:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 13:08:05,255 - INFO - 2025-10-24 13:08:05.254923:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 13:08:05,261 - INFO - 2025-10-24 13:08:05.256291:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 13:08:05,262 - INFO - 2025-10-24 13:08:05.262519:Test Shape (14256, 7)
+2025-10-24 13:08:05,263 - INFO - 2025-10-24 13:08:05.263512:Train Shape (262946, 7)
+2025-10-24 13:08:05,373 - INFO - X_train Shape:(262946, 6)
+2025-10-24 13:08:05,374 - INFO - X_test Shape:(14256, 6)
+2025-10-24 13:08:05,386 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 13:08:05,387 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 13:08:05,388 - INFO - y_train Shape:(262946,)
+2025-10-24 13:08:05,388 - INFO - y_test Shape:(14256,)
+2025-10-24 13:08:05,389 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 13:08:11,381 - INFO - 2025-10-24 13:08:11.381236:Data Cleaned and Split
+2025-10-24 13:08:34,443 - INFO - 2025-10-24 13:08:34.443126:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 13:08:34,444 - INFO - 2025-10-24 13:08:34.444360:XGBoost has RMSE 9.026600152081217
+2025-10-24 13:11:53,906 - INFO - 2025-10-24 13:11:53.906899:Actual vs Pred PLOT SAVED
+2025-10-24 13:11:53,925 - INFO - 2025-10-24 13:11:53.925290:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 13:11:53,950 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-10-24 13:11:53,957 - INFO - Hour Data Min:2025-10-24 17:00:00+00:00
+2025-10-24 13:11:53,958 - INFO - Hour Data Max:2025-10-24 17:00:00+00:00
+2025-10-24 13:11:53,978 - INFO - Y pred Shape:(2,)(Shape Should be 2)
+2025-10-24 14:39:56,518 - INFO - Main.py script started
+2025-10-24 14:39:58,149 - INFO - 2025-10-24 14:39:58.149668:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 14:40:06,986 - INFO - 2025-10-24 14:40:06.985273:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 14:40:07,020 - INFO - 2025-10-24 14:40:07.008047:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 14:40:07,072 - INFO - 2025-10-24 14:40:07.071950:Test Shape (14256, 7)
+2025-10-24 14:40:07,126 - INFO - 2025-10-24 14:40:07.126832:Train Shape (262946, 7)
+2025-10-24 14:40:07,255 - INFO - X_train Shape:(262946, 6)
+2025-10-24 14:40:07,269 - INFO - X_test Shape:(14256, 6)
+2025-10-24 14:40:07,310 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 14:40:07,339 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 14:40:07,378 - INFO - y_train Shape:(262946,)
+2025-10-24 14:40:07,393 - INFO - y_test Shape:(14256,)
+2025-10-24 14:40:07,421 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 14:40:12,569 - INFO - 2025-10-24 14:40:12.569737:Data Cleaned and Split
+2025-10-24 14:40:12,810 - INFO - 2025-10-24 14:40:12.809999:Ran LinearRegression models to compare performance
+2025-10-24 14:40:13,008 - INFO - 2025-10-24 14:40:13.008742:Ran Ridge models to compare performance
+2025-10-24 14:40:13,205 - INFO - 2025-10-24 14:40:13.205201:Ran Lasso models to compare performance
+2025-10-24 14:40:13,459 - INFO - 2025-10-24 14:40:13.459212:Ran ElasticNet models to compare performance
+2025-10-24 14:42:20,828 - INFO - 2025-10-24 14:42:20.828910:Ran RandomForest models to compare performance
+2025-10-24 14:42:26,074 - INFO - 2025-10-24 14:42:26.074248:Ran XGBoost models to compare performance
+2025-10-24 14:42:27,743 - INFO - 2025-10-24 14:42:27.743222:plot_to_compare_models
+2025-10-24 14:42:27,774 - INFO - 2025-10-24 14:42:27.765530:Model w Lowest TEST RMSE:XGBoost
+2025-10-24 14:42:27,862 - INFO - 2025-10-24 14:42:27.860389:Value Lowest RMSE:8.240625547566271
+2025-10-24 14:54:14,343 - INFO - 2025-10-24 14:54:14.343697:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 14:54:14,346 - INFO - 2025-10-24 14:54:14.346326:XGBoost has RMSE 8.281042945318438
+2025-10-24 14:57:15,621 - INFO - 2025-10-24 14:57:15.621591:Actual vs Pred PLOT SAVED

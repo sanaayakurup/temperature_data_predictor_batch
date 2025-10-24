@@ -5,15 +5,22 @@ import xgboost as xgb
 import numpy as np
 import plotly.graph_objects as go
 seed_value = 42
-from src.utils import setup_logger
+import logging
+from datetime import timezone
 import datetime
 from datetime import date
-my_logger = setup_logger('my_temperature_logger', 'logs_for_ml.log')
-my_logger.info(f"{datetime.datetime.now()}:Initialising the inference.py script")
-from src.read_data import pull_data
-import logging
-from datetime import datetime, timezone
 import os 
+from dotenv import load_dotenv
+from utils import setup_logger
+from read_data import pull_data
+#removed src from imports so that docker can corretly import 
+
+load_dotenv()
+API_PATH=os.getenv("API_URL")
+#setup here because we are not going to call main.py, but dockerise it.
+my_logger = setup_logger("my_temperature_logger", "./tmp/logs_for_ml.log") #log to tmp file in docker cont
+#my_logger = logging.getLogger("my_temperature_logger")
+my_logger.info(f"{datetime.datetime.now()}:Initialising the inference.py script")
 
 
 #Pull data for a certain hour/day(also pulla actuals)
@@ -23,7 +30,7 @@ def pull_data_for_inference(api_path,name_of_best_model):
     data.date=pd.to_datetime(data.date)
     #filter for current utc hour
     #get current utc hour 
-    current_utc_hour=datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    current_utc_hour=datetime.datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
     data=data.query('date==@current_utc_hour')
     #log dims 
     my_logger.info(f"Hour Data Shape:{data.shape}(Shape Should be 24)")
@@ -44,28 +51,9 @@ def pull_data_for_inference(api_path,name_of_best_model):
     mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_pred)), context="Y Pred")
 
 
- 
-# #%%
-# import pandas as pd
-# from datetime import datetime, timezone
-# from read_data import pull_data
-# data_path=pull_data("https://archive-api.open-meteo.com/v1/archive",'not_all',"2010-01-01") #all:pulls aall historical data, not all pulls current days data 
-# data=pd.read_csv('./data/temp_data_not_all_2025-10-23.csv').drop(columns='Unnamed: 0')
-# data.date=pd.to_datetime(data.date)
-# #filter for current utc hour
-# #get current utc hour 
-# current_utc_hour=datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
-# print(current_utc_hour)
-# data=data.query('date== @current_utc_hour')
-# data.head()
+def main():
+    y_pred, data = pull_data_for_inference(API_PATH, "XGBoost")
+    my_logger.info("Inference complete!")
 
-
-
-
-#Clean data(locationis all)
-#Upload Model
-#Write preds and actuals 
-#Log the above data in a db-keep appending to that db 
-#Plot the actual vs predicted by location in a dashboard 
-
-# %%
+if __name__ == "__main__":
+    main()

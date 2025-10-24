@@ -17,7 +17,7 @@ import os
 # load_dotenv()
 #https://open-meteo.com/en/features#available_apis
 
-my_logger = setup_logger('my_temperature_logger', './logs_for_ml.log')
+my_logger = logging.getLogger("my_temperature_logger")
 my_logger.info(f"{datetime.now()}:Initialising the API connection")
 def pull_data(data_url,all_data_or_current_hour,start_date):
     """

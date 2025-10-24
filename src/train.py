@@ -2,7 +2,6 @@ import mlflow
 import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
@@ -17,49 +16,12 @@ import plotly.graph_objects as go
 seed_value = 42
 from src.utils import setup_logger
 import datetime
-from datetime import date
-my_logger = setup_logger('my_temperature_logger', './logs_for_ml.log')
+from datetime import date,timezone
+import logging
+
+
+my_logger = logging.getLogger("my_temperature_logger")
 my_logger.info(f"{datetime.datetime.now()}:Initialising the train.py script connection")
-
-
-def read_and_clean_data(path,train_upper_date,test_lower_date):
-    """
-    Define a function to read in the data, clean, and split into train and test,
-    and also scale the data for linear models
-    """
-    data=pd.read_csv(path).drop(columns='Unnamed: 0')
-    data.date=pd.to_datetime(data.date)
-    location_map={'Pune':1,'Mississauga':2}
-    data.location=data.location.map(location_map)
-    train_data=data.query(f'date<="{train_upper_date}"') #train_upper_date
-    test_data=data.query(f'date>="{test_lower_date}"') #test_lower_date
-    train_data.set_index('date',inplace=True)
-    test_data.set_index('date',inplace=True)
-    my_logger.info(f"{datetime.datetime.now()}:Testmin Min max date{test_data.index.min(),test_data.index.max()}")
-    my_logger.info(f"{datetime.datetime.now()}:Train Min  max date{train_data.index.min(),train_data.index.max()}")
-    my_logger.info(f"{datetime.datetime.now()}:Test Shape {test_data.shape}")
-    my_logger.info(f"{datetime.datetime.now()}:Train Shape {train_data.shape}")
-    X_train=train_data.drop(columns='temperature_2m')
-    y_train=train_data['temperature_2m']
-    X_test=test_data.drop(columns='temperature_2m')
-    y_test=test_data['temperature_2m']
-    scaler=MinMaxScaler()
-    X_train_scaled=scaler.fit_transform(X_train)
-    X_test_scaled=scaler.transform(X_test)
-    my_logger.info(f"X_train Shape:{X_train.shape}")
-    my_logger.info(f"X_test Shape:{X_test.shape}")
-    my_logger.info(f"X_train_scaled Shape:{X_train_scaled.shape}")
-    my_logger.info(f"X_test_scaled Shape:{X_test_scaled.shape}")
-    my_logger.info(f"y_train Shape:{y_train.shape}")
-    my_logger.info(f"y_test Shape:{y_test.shape}")
-    my_logger.info(f"Type X train Shape:{type(X_train)}")
-    #log data to mlflow-test, train, data
-    mlflow.log_input(mlflow.data.from_pandas(X_train), context="training_features")
-    mlflow.log_input(mlflow.data.from_pandas(X_test), context="testing_features")
-    mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_train)), context="Y train")
-    mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_test)), context="Y test")
-    my_logger.info(f"{datetime.datetime.now()}:Data Cleaned and Split")
-    return X_train,X_test,X_train_scaled,X_test_scaled,y_train,y_test
 
 def make_model(X_train,X_test,y_train,y_test,model,model_name,df_models_comp):
       
@@ -149,7 +111,7 @@ def run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_sca
         objective_with_data = lambda trial: objective(trial, X_train, X_test, y_train, y_test)
         # set seed for Optuna
         study = optuna.create_study(direction="minimize", sampler=optuna.samplers.TPESampler(seed=seed_value))
-        study.optimize(objective_with_data, n_trials=10, timeout=600)  # Increase for more trials
+        study.optimize(objective_with_data, n_trials=300, timeout=600)  # Increase for more trials
         best_params = study.best_params
         best_RMSE = study.best_value
         print(f"Best Hyperparameters : {best_params}")
@@ -226,7 +188,7 @@ def plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model):
     actual_vs_pred_test=pd.concat([y_test.reset_index(), pd.DataFrame(y_pred)], axis=1)
     actual_vs_pred_test.columns=['date', 'actual_temp', 'pred_temp']
     actual_vs_pred_test_w_location=pd.concat([actual_vs_pred_test,pd.DataFrame(X_test.location).reset_index(drop=True)],axis=1)
-    actual_vs_pred_test_w_location.to_csv('actual_vs_pred_test_w_location.csv')
+    actual_vs_pred_test_w_location.to_csv(f'actual_vs_pred_test_w_location_{datetime.datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")}.csv')
     #log this in mlflow
     mlflow.log_input(mlflow.data.from_pandas(actual_vs_pred_test_w_location), context="actual vs pred df")
     for i in actual_vs_pred_test_w_location.location.unique():

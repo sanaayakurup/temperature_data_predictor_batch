@@ -1,5 +1,8 @@
-from src.train import find_lowest_rmse,read_and_clean_data,make_model,plot_to_compare_models,find_lowest_rmse,run_best_model,plot_actual_vs_pred
+from src.train import find_lowest_rmse,make_model,plot_to_compare_models,find_lowest_rmse,run_best_model,plot_actual_vs_pred
 from src.read_data import pull_data 
+from src.inference import pull_data_for_inference
+from src.clean_data import data_clean,split_data
+from src.utils import setup_logger
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
@@ -10,7 +13,12 @@ import os
 from mlflow.tracking import MlflowClient
 import mlflow
 import openmeteo_requests
-from src.inference import pull_data_for_inference
+import datetime
+from datetime import date
+from src.utils import setup_logger
+import logging
+
+
 load_dotenv()  
 
 # Point MLflow to your SQLite database
@@ -30,11 +38,15 @@ else:
     experiment_id = experiment.experiment_id
 
 api_path=os.getenv("API_URL")
+#set logger up once 
+my_logger = setup_logger("my_temperature_logger", "./logs_for_ml.log")
+my_logger.info("Main.py script started")
 #rename the name of the "run_name", everytime you run the main file 
 def main():
     with mlflow.start_run(run_name="All_Models_Run", experiment_id=experiment_id):
         data_path=pull_data(api_path,'all',"2010-01-01") #pulls all historical data
-        X_train,X_test,X_train_scaled,X_test_scaled,y_train,y_test=read_and_clean_data(data_path,'2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
+        cleaned_data=data_clean(data_path)
+        X_train,X_test,X_train_scaled,X_test_scaled,y_train,y_test=split_data(cleaned_data,'2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
         df_models_comp = pd.DataFrame(columns=["model_name", "rmse_train", "rmse_test"])
         make_model(X_train_scaled, X_test_scaled, y_train, y_test, LinearRegression(), 'LinearRegression',df_models_comp)
         make_model(X_train_scaled, X_test_scaled, y_train, y_test, Ridge(), 'Ridge',df_models_comp)
@@ -46,8 +58,8 @@ def main():
         name_of_best_model=find_lowest_rmse(df_models_comp)
         y_pred,rmse_test=run_best_model(name_of_best_model,X_train, y_train,X_test,y_test,X_train_scaled,X_test_scaled)
         plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model) 
-        pull_data_for_inference(api_path,'XGBoost')  
-
+        #pull_data_for_inference(api_path,'XGBoost') 
+         
 if __name__ == "__main__":
     main()
 
