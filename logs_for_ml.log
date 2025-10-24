@@ -308,3 +308,38 @@ TypeError: from_pandas() got an unexpected keyword argument 'context'
 2025-10-23 16:52:21,161 - INFO - Hour Data Min:2025-10-23 20:00:00+00:00
 2025-10-23 16:52:21,162 - INFO - Hour Data Max:2025-10-23 20:00:00+00:00
 2025-10-23 16:52:21,199 - INFO - Y pred Shape:(2,)(Shape Should be 2)
+2025-10-24 10:59:21,583 - INFO - 2025-10-24 10:59:21.583060:Initialising the API connection
+2025-10-24 10:59:21,659 - INFO - 2025-10-24 10:59:21.659563:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 11:01:49,757 - INFO - 2025-10-24 11:01:49.757903:Initialising the train.py script connection
+2025-10-24 11:01:51,265 - INFO - 2025-10-24 11:01:51.265260:Initialising the API connection
+2025-10-24 11:01:51,304 - INFO - 2025-10-24 11:01:51.304651:Initialising the inference.py script
+2025-10-24 11:01:54,682 - INFO - 2025-10-24 11:01:54.682475:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2010-01-01', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 11:02:04,909 - INFO - 2025-10-24 11:02:04.906168:Testmin Min max date(Timestamp('2025-01-01 00:00:00+0000', tz='UTC'), Timestamp('2025-10-24 23:00:00+0000', tz='UTC'))
+2025-10-24 11:02:04,914 - INFO - 2025-10-24 11:02:04.910109:Train Min  max date(Timestamp('2010-01-01 00:00:00+0000', tz='UTC'), Timestamp('2024-12-31 00:00:00+0000', tz='UTC'))
+2025-10-24 11:02:04,915 - INFO - 2025-10-24 11:02:04.915353:Test Shape (14256, 7)
+2025-10-24 11:02:04,916 - INFO - 2025-10-24 11:02:04.916633:Train Shape (262946, 7)
+2025-10-24 11:02:05,010 - INFO - X_train Shape:(262946, 6)
+2025-10-24 11:02:05,011 - INFO - X_test Shape:(14256, 6)
+2025-10-24 11:02:05,016 - INFO - X_train_scaled Shape:(262946, 6)
+2025-10-24 11:02:05,017 - INFO - X_test_scaled Shape:(14256, 6)
+2025-10-24 11:02:05,018 - INFO - y_train Shape:(262946,)
+2025-10-24 11:02:05,019 - INFO - y_test Shape:(14256,)
+2025-10-24 11:02:05,023 - INFO - Type X train Shape:<class 'pandas.core.frame.DataFrame'>
+2025-10-24 11:02:10,995 - INFO - 2025-10-24 11:02:10.995202:Data Cleaned and Split
+2025-10-24 11:02:11,206 - INFO - 2025-10-24 11:02:11.206077:Ran LinearRegression models to compare performance
+2025-10-24 11:02:11,425 - INFO - 2025-10-24 11:02:11.425390:Ran Ridge models to compare performance
+2025-10-24 11:02:11,603 - INFO - 2025-10-24 11:02:11.603738:Ran Lasso models to compare performance
+2025-10-24 11:02:11,811 - INFO - 2025-10-24 11:02:11.811721:Ran ElasticNet models to compare performance
+2025-10-24 11:04:05,001 - INFO - 2025-10-24 11:04:05.001031:Ran RandomForest models to compare performance
+2025-10-24 11:04:08,267 - INFO - 2025-10-24 11:04:08.266954:Ran XGBoost models to compare performance
+2025-10-24 11:04:09,212 - INFO - 2025-10-24 11:04:09.212258:plot_to_compare_models
+2025-10-24 11:04:09,240 - INFO - 2025-10-24 11:04:09.224906:Model w Lowest TEST RMSE:XGBoost
+2025-10-24 11:04:09,246 - INFO - 2025-10-24 11:04:09.243718:Value Lowest RMSE:8.240625547566271
+2025-10-24 11:04:36,417 - INFO - 2025-10-24 11:04:36.417033:XGBoost IS RUN AND SAVED IN MODELS DIR
+2025-10-24 11:04:36,418 - INFO - 2025-10-24 11:04:36.417944:XGBoost has RMSE 9.02673526149735
+2025-10-24 11:06:50,137 - INFO - 2025-10-24 11:06:50.137129:Actual vs Pred PLOT SAVED
+2025-10-24 11:06:50,163 - INFO - 2025-10-24 11:06:50.163118:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 11:06:50,271 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-10-24 11:06:50,283 - INFO - Hour Data Min:2025-10-24 15:00:00+00:00
+2025-10-24 11:06:50,287 - INFO - Hour Data Max:2025-10-24 15:00:00+00:00
+2025-10-24 11:06:50,335 - INFO - Y pred Shape:(2,)(Shape Should be 2)
