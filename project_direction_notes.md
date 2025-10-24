@@ -2,10 +2,9 @@
 #creat a git repo -Done
 #create a venve-Done
 #add gitignore file for csvs -Done
-#log MLFLOW DATA FILES TRAINING VERSIONS -
-#write code to pull in hourly historical temperature data and store in a csv/cloud bucket. make sure error handling and logging is in place. Maybe create a 
-utils file to pull in the logger. -Done
-#use this file to train a model to predict temp for each hour  jupyter
+#log MLFLOW DATA FILES TRAINING VERSIONS 
+#write code to pull in hourly historical temperature data and store in a csv/cloud bucket. make sure error handling and logging is in place. Maybe create a utils file to pull in the logger. -Done
+#use this file to train a model to predict temp for each hour-done
 #make sure you use logging, -done
 #and log experiments with mlflow  Done.
 

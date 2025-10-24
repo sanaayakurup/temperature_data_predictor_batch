@@ -226,6 +226,7 @@ def plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model):
     actual_vs_pred_test=pd.concat([y_test.reset_index(), pd.DataFrame(y_pred)], axis=1)
     actual_vs_pred_test.columns=['date', 'actual_temp', 'pred_temp']
     actual_vs_pred_test_w_location=pd.concat([actual_vs_pred_test,pd.DataFrame(X_test.location).reset_index(drop=True)],axis=1)
+    actual_vs_pred_test_w_location.to_csv('actual_vs_pred_test_w_location.csv')
     #log this in mlflow
     mlflow.log_input(mlflow.data.from_pandas(actual_vs_pred_test_w_location), context="actual vs pred df")
     for i in actual_vs_pred_test_w_location.location.unique():
@@ -252,14 +253,12 @@ def plot_actual_vs_pred(y_test,y_pred,X_test,name_of_best_model):
 
         fig.show()
         plot_path = f"actual_vs_predicted_{i}.png"
-        fig.savefig(plot_path)
-
+        fig.write_image(plot_path)
         # Log the plot as an artifact
         mlflow.log_artifact(plot_path, "plots") # "plots" is an optional subdirectory within the artifacts
 
 
-    plt.close(fig) # Close the plot to free up memory
     my_logger.info(f"{datetime.datetime.now()}:Actual vs Pred PLOT SAVED")
 
-if __name__=="__main__":
-    read_and_clean_data('./data/temp_data_all_2025-10-23.csv','2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
+# if __name__=="__main__":
+#     read_and_clean_data('./data/temp_data_all_2025-10-23.csv','2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
