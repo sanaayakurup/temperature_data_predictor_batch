@@ -1,10 +1,33 @@
-name: Docker CI Test
+name: Build and Run Inference Container
 
-on: [push]
+on:
+  push:
+    paths:
+      - "inference.py"
+      - "Dockerfile"
+      - ".github/workflows/docker.yml"
+    branches:
+      - main  # or whichever branch you use
 
 jobs:
-  test:
+  build-and-run:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print Hello
-        run: echo "GitHub Actions is working!"
+      # 1. Checkout your repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up Docker (Buildx enables better caching and building)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 3. Build the Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t my_inference_image:latest .
+
+      # 4. Run the Docker container
+      - name: Run inference container
+        run: |
+          docker run --rm my_inference_image:latest
