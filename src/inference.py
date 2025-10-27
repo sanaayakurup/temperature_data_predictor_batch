@@ -49,7 +49,7 @@ def pull_data_for_inference(api_path,name_of_best_model,models_dir):
         model = pickle.load(f)
     y_pred=model.predict(data_for_pred)
     my_logger.info(f"Y pred Shape:{y_pred.shape}(Shape Should be 2)")
-    my_logger.info(f"inference script is run scuccessfully")
+    my_logger.info(f"inference script is run successfully")
 
     #mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_pred)), context="Y Pred")
     return y_pred,data
