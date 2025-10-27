@@ -8,9 +8,10 @@
 #make sure you use logging, -done
 #and log experiments with mlflow  Done.
 
-#once this is done, create an inference pipelinee/script that will read hourly data, and give out predictions
-#this should shouw viz in the dashbaord -maybe use fastapi 
-#compare the preds to actuals as well(this comes from the API)
+#once this is done, create an inference pipelinee/script that will read hourly data, and give out predictions-done
+#append each hourly pred to a cloud storage, or db 
+#from the above, read and stream into a dashboard to compare actuals vs pred, and RMSE  
+#WOULD FASTAPI BE OF ANY USE? 
 #WHAT CAN BE DONE TO PARALLELIZE THE STEPS IF THERES TOO MUCH DATA?
 #CAN WE DECOUPLE USING A FEATURE STORE 
 #GIT HUB ACTIONS-THINK ABOUT HOW WE CAN DEPLOY WITH GA

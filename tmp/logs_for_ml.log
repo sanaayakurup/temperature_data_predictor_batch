@@ -1,0 +1,31 @@
+2025-10-24 19:58:09,178 - INFO - 2025-10-24 19:58:09.178062:Initialising the inference.py script
+2025-10-24 19:58:09,855 - INFO - 2025-10-24 19:58:09.855277:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-24', 'end_date': '2025-10-24', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-10-24 19:58:09,865 - INFO - 2025-10-24 19:58:09.865624:Error!:Cannot save file into a non-existent directory: 'tmp'
+2025-10-24 19:58:09,868 - ERROR - Uncaught exception
+Traceback (most recent call last):
+  File "/app/src/inference.py", line 61, in <module>
+    main()
+  File "/app/src/inference.py", line 57, in main
+    y_pred, data = pull_data_for_inference(API_PATH, "XGBoost",models_dir)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/inference.py", line 31, in pull_data_for_inference
+    data=pd.read_csv(data_path).drop(columns='Unnamed: 0')
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/common.py", line 728, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/io/common.py", line 472, in _get_filepath_or_buffer
+    raise ValueError(msg)
+ValueError: Invalid file path or buffer object type: <class 'NoneType'>

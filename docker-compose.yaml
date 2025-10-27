@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  inference:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: inference_service
+    command: python src/inference.py
+    env_file: .env
+    volumes:
+      - ./src:/app/src          # Mount source code
+      - ./models:/models         # Mount model folder
+      - ./tmp:/tmp               # Mount temp outputs/logs
+    environment:
+      - PYTHONPATH=/app/src
+    # watch:
+    #   - action: rebuild
+    #     path: ./src              # Auto rebuild on src code change

@@ -9,7 +9,7 @@ import openmeteo_requests
 import pandas as pd
 import requests_cache
 from retry_requests import retry
-from src.utils import setup_logger
+from utils import setup_logger
 import logging
 from datetime import datetime, timezone
 import os 
@@ -75,11 +75,12 @@ def pull_data(data_url,all_data_or_current_hour,start_date):
             all_dfs.append(df)
         combined_df = pd.concat(all_dfs, ignore_index=True)
         my_logger.info(f"{datetime.now()}:Data Pulled in for params {params}")
-        combined_df.to_csv(f'./data/temp_data_{all_data_or_current_hour}_{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.csv')
-        return f'./data/temp_data_{all_data_or_current_hour}_{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.csv'        
+        path_to_write="all_data_or_current_hour}_{datetime.now(timezone.utc).strftime('%Y-%m-%d')"
+        combined_df.to_csv(f'/tmp/temp_data_{path_to_write}.csv')
+        return combined_df,f'/tmp/temp_data_{path_to_write}.csv'        
     except Exception as e:
         print(e)
         my_logger.info(f"{datetime.now()}:Error!:{e}")
 
-if __name__=="__main__":
-    pull_data("https://archive-api.open-meteo.com/v1/archive",'all',"2010-01-01") #pull data for the whole timeframe 
+# if __name__=="__main__":
+#     pull_data("https://archive-api.open-meteo.com/v1/archive",'all',"2010-01-01") #pull data for the whole timeframe 

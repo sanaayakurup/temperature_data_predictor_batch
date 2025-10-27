@@ -44,7 +44,7 @@ my_logger.info("Main.py script started")
 #rename the name of the "run_name", everytime you run the main file 
 def main():
     with mlflow.start_run(run_name="All_Models_Run", experiment_id=experiment_id):
-        data_path=pull_data(api_path,'all',"2010-01-01") #pulls all historical data
+        data,data_path=pull_data(api_path,'all',"2010-01-01") #pulls all historical data
         cleaned_data=data_clean(data_path)
         X_train,X_test,X_train_scaled,X_test_scaled,y_train,y_test=split_data(cleaned_data,'2024-12-31 00:00:00+0000','2025-01-01 00:00:00+0000')
         df_models_comp = pd.DataFrame(columns=["model_name", "rmse_train", "rmse_test"])
