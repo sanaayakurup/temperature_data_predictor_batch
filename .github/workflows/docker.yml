@@ -1,33 +1,48 @@
-name: Build and Run Inference Container
+name: Build, Push, and Run Inference Container
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "inference.py"
       - "Dockerfile"
       - ".github/workflows/docker.yml"
-    branches:
-      - main  # or whichever branch you use
 
 jobs:
-  build-and-run:
+  build-push-run:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout your repository
+      # 1. Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Set up Docker (Buildx enables better caching and building)
+      # 2. Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 3. Build the Docker image
+      # 3. Log in to Docker Hub using secrets
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 4. Build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t my_inference_image:latest .
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
+          docker build -t $IMAGE_NAME .
 
-      # 4. Run the Docker container
+      # 5. Push the Docker image to Docker Hub
+      - name: Push Docker image
+        run: |
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
+          docker push $IMAGE_NAME
+
+      # 6. Run the Docker container (optional, to verify it works)
       - name: Run inference container
         run: |
-          docker run --rm my_inference_image:latest
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
+          docker run --rm $IMAGE_NAME
