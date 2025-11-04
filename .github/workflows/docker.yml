@@ -44,5 +44,9 @@ jobs:
       # 6. Run the Docker container (optional, to verify it works)
       - name: Run inference container
         run: |
+          echo "${{ secrets.GCP_SA_KEY }}" > gcp_key.json
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
-          docker run --rm $IMAGE_NAME
+          docker run --rm \
+            -e GOOGLE_APPLICATION_CREDENTIALS=/gcp_key.json \
+            -v $PWD/gcp_key.json:/gcp_key.json:ro \
+            $IMAGE_NAME
