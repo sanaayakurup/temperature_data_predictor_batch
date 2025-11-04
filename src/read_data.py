@@ -75,9 +75,10 @@ def pull_data(data_url,all_data_or_current_hour,start_date):
             all_dfs.append(df)
         combined_df = pd.concat(all_dfs, ignore_index=True)
         my_logger.info(f"{datetime.now()}:Data Pulled in for params {params}")
-        path_to_write="all_data_or_current_hour}_{datetime.now(timezone.utc).strftime('%Y-%m-%d')"
-        combined_df.to_csv(f'/tmp/temp_data_{path_to_write}.csv')
-        return combined_df,f'/tmp/temp_data_{path_to_write}.csv'        
+        #do i really need path here? I can just write it to gcp-change later
+        #path_to_write=f"{all_data_or_current_hour}_{datetime.now(timezone.utc).strftime('%Y-%m-%d')}"
+        #combined_df.to_csv(f'/tmp/temp_data_{path_to_write}.csv')
+        return combined_df #f'/tmp/temp_data_{path_to_write}.csv'        
     except Exception as e:
         print(e)
         my_logger.info(f"{datetime.now()}:Error!:{e}")
