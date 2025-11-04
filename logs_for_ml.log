@@ -1,48 +1,128 @@
-2025-10-29 09:51:32,860 - INFO - 2025-10-29 09:51:32.860157:Initialising the inference.py script
-2025-10-29 09:51:32,941 - INFO - 2025-10-29 09:51:32.941808:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-29', 'end_date': '2025-10-29', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-29 09:51:33,044 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-29 09:51:33,121 - INFO - Hour Data Min:2025-10-29 13:00:00+00:00
-2025-10-29 09:51:33,128 - INFO - Hour Data Max:2025-10-29 13:00:00+00:00
-2025-10-29 09:51:45,025 - INFO - 'Model loaded:', model.resource_name
-2025-10-29 09:51:45,027 - ERROR - Uncaught exception
+2025-11-03 20:17:56,748 - INFO - 2025-11-03 20:17:56.748167:Initialising the inference.py script
+2025-11-03 20:17:56,813 - INFO - 2025-11-03 20:17:56.812895:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:17:56,839 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:17:56,842 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:17:56,843 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:18:08,825 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x000001FF68C95940>
+2025-11-03 20:18:09,555 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:18:09,560 - INFO - The file has been written to the bucket !
+2025-11-03 20:18:09,562 - INFO - inference script is run successfully
+2025-11-03 20:18:09,563 - INFO - Inference complete!
+2025-11-03 20:19:15,575 - INFO - 2025-11-03 20:19:15.575715:Initialising the inference.py script
+2025-11-03 20:19:15,672 - INFO - 2025-11-03 20:19:15.672123:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:19:15,697 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:19:15,703 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:19:15,704 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:19:35,603 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x0000025C822F9010>
+2025-11-03 20:19:35,623 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:19:35,624 - INFO - The file has been written to the bucket !
+2025-11-03 20:19:35,625 - INFO - inference script is run successfully
+2025-11-03 20:19:35,625 - INFO - Inference complete!
+2025-11-03 20:20:31,929 - INFO - 2025-11-03 20:20:31.929200:Initialising the inference.py script
+2025-11-03 20:20:31,957 - INFO - 2025-11-03 20:20:31.956918:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:20:31,971 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:20:31,972 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:20:31,973 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:20:46,277 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x000001BB30845160>
+2025-11-03 20:20:46,302 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:20:46,303 - INFO - The file has been written to the bucket !
+2025-11-03 20:20:46,303 - INFO - inference script is run successfully
+2025-11-03 20:20:46,304 - INFO - Inference complete!
+2025-11-03 20:21:30,016 - INFO - 2025-11-03 20:21:30.016379:Initialising the inference.py script
+2025-11-03 20:21:30,042 - INFO - 2025-11-03 20:21:30.042252:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:21:30,052 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:21:30,053 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:21:30,054 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:21:40,084 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x0000022EB4FA9160>
+2025-11-03 20:21:40,109 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:21:47,177 - ERROR - Uncaught exception
 Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 85, in <module>
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 98, in <module>
     main()
     ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 81, in main
-    y_pred, data = pull_data_for_inference(API_PATH, project_id,model_id)
-                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 69, in pull_data_for_inference
-    y_pred=model.predict(data_for_pred)
-           ^^^^^^^^^^^^^
-AttributeError: 'Model' object has no attribute 'predict'
-2025-10-29 10:33:27,562 - INFO - 2025-10-29 10:33:27.562756:Initialising the inference.py script
-2025-10-29 10:33:27,565 - ERROR - Uncaught exception
-Traceback (most recent call last):
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 85, in <module>
-    main()
-    ~~~~^^
-  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 81, in main
-    y_pred, data = pull_data_for_inference(API_PATH, project_id,model_id)
-                                                     ^^^^^^^^^^
-NameError: name 'project_id' is not defined
-2025-10-29 10:34:04,631 - INFO - 2025-10-29 10:34:04.631637:Initialising the inference.py script
-2025-10-29 10:34:04,674 - INFO - 2025-10-29 10:34:04.674196:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-29', 'end_date': '2025-10-29', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-29 10:34:04,701 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-29 10:34:04,724 - INFO - Hour Data Min:2025-10-29 14:00:00+00:00
-2025-10-29 10:34:04,730 - INFO - Hour Data Max:2025-10-29 14:00:00+00:00
-2025-10-29 10:34:15,916 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x0000027DA0365940>
-2025-10-29 10:34:15,937 - INFO - Y pred Shape:(2,)(Shape Should be 2)
-2025-10-29 10:34:15,940 - INFO - inference script is run successfully
-2025-10-29 10:34:15,940 - INFO - chalo!
-2025-10-29 10:34:15,942 - INFO - Inference complete!
-2025-10-29 10:38:37,337 - INFO - 2025-10-29 10:38:37.337011:Initialising the inference.py script
-2025-10-29 10:38:37,368 - INFO - 2025-10-29 10:38:37.368685:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-10-29', 'end_date': '2025-10-29', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
-2025-10-29 10:38:37,378 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
-2025-10-29 10:38:37,379 - INFO - Hour Data Min:2025-10-29 14:00:00+00:00
-2025-10-29 10:38:37,380 - INFO - Hour Data Max:2025-10-29 14:00:00+00:00
-2025-10-29 10:38:47,742 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x0000028259EA5940>
-2025-10-29 10:38:47,788 - INFO - Y pred Shape:(2,)(Shape Should be 2)
-2025-10-29 10:38:47,789 - INFO - inference script is run successfully
-2025-10-29 10:38:47,790 - INFO - chalo!
-2025-10-29 10:38:47,791 - INFO - Inference complete!
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 94, in main
+    y_pred, data = pull_data_for_inference(API_PATH, bucket,model_filename)
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 85, in pull_data_for_inference
+    write_preds_to_gcp_bucket(bucket,f'preds_and_actuals_{current_utc_hour}',csv_buffer)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\src\inference.py", line 51, in write_preds_to_gcp_bucket
+    blob.upload_from_file(source_file_obj, content_type='text/csv')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sanaaya\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\cloud\storage\blob.py", line 2851, in upload_from_file
+    self._prep_and_do_upload(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        file_obj,
+        ^^^^^^^^^
+    ...<12 lines>...
+        retry=retry,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\cloud\storage\blob.py", line 2700, in _prep_and_do_upload
+    created_json = self._do_upload(
+        client,
+    ...<12 lines>...
+        command=command,
+    )
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\cloud\storage\blob.py", line 2523, in _do_upload
+    response = self._do_resumable_upload(
+        client,
+    ...<12 lines>...
+        command=command,
+    )
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\cloud\storage\blob.py", line 2329, in _do_resumable_upload
+    upload, transport = self._initiate_resumable_upload(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        client,
+        ^^^^^^^
+    ...<12 lines>...
+        command=command,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\cloud\storage\blob.py", line 2203, in _initiate_resumable_upload
+    upload.initiate(
+    ~~~~~~~~~~~~~~~^
+        transport,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\resumable_media\requests\upload.py", line 402, in initiate
+    method, url, payload, headers = self._prepare_initiate_request(
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        stream,
+        ^^^^^^^
+    ...<3 lines>...
+        stream_final=stream_final,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Sanaaya\Desktop\temperature_data_predictor_batch\venv\Lib\site-packages\google\resumable_media\_upload.py", line 471, in _prepare_initiate_request
+    raise ValueError("Stream must be at beginning.")
+ValueError: Stream must be at beginning.
+2025-11-03 20:24:35,693 - INFO - 2025-11-03 20:24:35.692955:Initialising the inference.py script
+2025-11-03 20:24:35,746 - INFO - 2025-11-03 20:24:35.746248:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:24:35,760 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:24:35,761 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:24:35,763 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:24:53,681 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x000001A12F059160>
+2025-11-03 20:24:53,707 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:25:04,816 - INFO - The file has been written to the bucket !
+2025-11-03 20:25:04,818 - INFO - inference script is run successfully
+2025-11-03 20:25:04,820 - INFO - Inference complete!
+2025-11-03 20:27:17,027 - INFO - 2025-11-03 20:27:17.027717:Initialising the inference.py script
+2025-11-03 20:27:17,082 - INFO - 2025-11-03 20:27:17.082050:Data Pulled in for params {'latitude': [18.5204, 43.589], 'longitude': [73.8567, -79.6441], 'start_date': '2025-11-04', 'end_date': '2025-11-04', 'hourly': ['temperature_2m', 'rain', 'wind_speed_10m', 'pressure_msl']}
+2025-11-03 20:27:17,134 - INFO - Hour Data Shape:(2, 8)(Shape Should be 24)
+2025-11-03 20:27:17,146 - INFO - Hour Data Min:2025-11-04 01:00:00+00:00
+2025-11-03 20:27:17,160 - INFO - Hour Data Max:2025-11-04 01:00:00+00:00
+2025-11-03 20:27:27,157 - INFO - 'Model loaded:', <Bucket: temp_model_artifacts>,<google.cloud.storage.client.Client object at 0x00000209823F5160>
+2025-11-03 20:27:27,551 - INFO - Y pred Shape:(2, 1)(Shape Should be 2)
+2025-11-03 20:27:34,270 - INFO - The file has been written to the bucket !
+2025-11-03 20:27:34,271 - INFO - inference script is run successfully
+2025-11-03 20:27:34,272 - INFO - Inference complete!

@@ -43,8 +43,15 @@ def upload_model_from_gcp(bucket,model_filename):
     my_logger.info(f"'Model loaded:', {bucket},{client}")
     return loaded_model
 
-"""def write_to_gcp_bucket():
-"""
+def write_preds_to_gcp_bucket(bucket_name,destination_blob_name,source_file_obj):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    #upload from the file-like object (in memory)
+    source_file_obj.seek(0)
+    blob.upload_from_file(source_file_obj, content_type='text/csv')
+    print(f'File uploaded to {destination_blob_name}.')
+
 #Pull data for a certain hour/day(also pulla actuals)
 def pull_data_for_inference(api_path,bucket,model_filename):
     data=pull_data(api_path,'not_all',"2010-01-01") #all:pulls aall historical data, not all pulls current days data 
@@ -64,13 +71,21 @@ def pull_data_for_inference(api_path,bucket,model_filename):
     #remove temperature col
     y_actual=data.drop(columns=['temperature_2m'])
     data_for_pred=data.drop(columns=['temperature_2m','date'])
+    print(data_for_pred)
     #upload model from gcp 
     model=upload_model_from_gcp(bucket,model_filename)
-    y_pred=model.predict(data_for_pred)
+    y_pred=pd.DataFrame(model.predict(data_for_pred))
+    y_pred.columns=['preds']
+    final_data=pd.concat([y_pred,data_for_pred.reset_index(drop=True)],axis=1)
+    print(final_data)
     my_logger.info(f"Y pred Shape:{y_pred.shape}(Shape Should be 2)")
-    my_logger.info(f"inference script is run successfully")
-    my_logger.info(f"chalo!")
     #log the actuals vs predicted into a gcp bucket 
+    #save the filtered df to a CSV in memory
+    csv_buffer = io.StringIO()  #source_file_obj
+    final_data.to_csv(csv_buffer, index=False)  
+    write_preds_to_gcp_bucket(bucket,f'predictions/preds_and_actuals_{current_utc_hour}',csv_buffer)    
+    my_logger.info(f"The file has been written to the bucket !")
+    my_logger.info(f"inference script is run successfully")
 
     #mlflow.log_input(mlflow.data.from_pandas(pd.DataFrame(y_pred)), context="Y Pred")
     return y_pred,data

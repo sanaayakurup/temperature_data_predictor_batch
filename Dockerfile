@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the src folder into the container
 COPY src/ ./src/
-COPY models/ /models/
+#COPY models/ /models/
 COPY .env .env
 
 # Set PYTHONPATH so imporDockerfilets from src work
