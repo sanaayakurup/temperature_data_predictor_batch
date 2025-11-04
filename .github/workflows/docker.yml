@@ -48,18 +48,18 @@ jobs:
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
 
-          # Write GCP service account JSON from GitHub Secret to a file
-          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > key.json
+          # Decode the base64-encoded key safely into JSON
+          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY_B64 }}" | base64 --decode > key.json
 
-          # Verify key file exists
-          echo "Key file created:"
-          ls -l key.json
+          # (Optional) sanity check
+          head -n 3 key.json
+          python3 -m json.tool key.json > /dev/null && echo "✅ JSON key is valid"
 
-          # Run container with key mounted and env var set
+          # Run your container with key mounted
           docker run --rm \
             -v $(pwd)/key.json:/app/key.json \
             -e GOOGLE_APPLICATION_CREDENTIALS="/app/key.json" \
             $IMAGE_NAME
 
-          # Clean up the key after running (good security hygiene)
+          # Cleanup
           rm key.json
