@@ -41,19 +41,8 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
           docker push $IMAGE_NAME
 
-      # 6. Save GCP credentials securely
-      - name: Save GCP credentials
-        run: |
-          mkdir -p /tmp/gcp
-          cat <<EOF > /tmp/gcp/key.json
-      ${{ secrets.GCP_SA_KEY }}
-      EOF
-
-      # 7. Run the Docker container with GCP credentials
+      # 6. Run the Docker container (optional, to verify it works)
       - name: Run inference container
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my_inference_image:latest
-          docker run --rm \
-            -e GOOGLE_APPLICATION_CREDENTIALS=/gcp_key.json \
-            -v /tmp/gcp/key.json:/gcp_key.json:ro \
-            $IMAGE_NAME
+          docker run --rm $IMAGE_NAME
